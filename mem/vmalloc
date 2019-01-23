@@ -1,0 +1,20 @@
+
+
+
+
+
+vmalloc
+__vmalloc
+get_vm_area  |	__vmalloc   | kmalloc | alloc_page | map_vm_area
+__get_vm_area |        |              |            | 
+kmalloc |
+
+
+
+
+
+
+
+comments:
+get_vm_area 用户生成一段线性地址描述结构体（虚拟地址）
+alloc_page 用于申请一个页面

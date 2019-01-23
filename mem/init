@@ -1,0 +1,11 @@
+
+
+
+
+pagetable_init
+kernel_physical_mapping_init
+
+
+
+swapper_pg_dir   内核页表目录指针, 初始地址的赋值在arch/i386/kernel/head.S中
+

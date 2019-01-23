@@ -1,0 +1,19 @@
+
+kmalloc
+__kmalloc
+__cache_alloc
+cache_alloc_refill
+cache_grow
+kmem_getpages
+alloc_pagesst_policy         |   alloc_pages_node
+alloc_pages_current |
+zonelist_policy(选择node)     |
+		__alloc_pages
+zone_watermark_ok	|  buffered_rmqueue 
+			|	__rmqueue
+			|  expand   #将获取的较大连续页面多余的页面分配到order较小的area中。
+			k
+
+
+
+
