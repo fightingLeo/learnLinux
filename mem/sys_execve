@@ -1,0 +1,37 @@
+
+
+
+sys_execve
+do_execve
+kmalloc    |  open_exec | mm_alloc
+  -----    |  --------- | allocate_mm       | mm_init
+  ------   |  --------- | kmem_cache_alloc
+  -------  |  --------  | _cache_alloc
+  -------  |  --------  | cache_alloc_refill
+  -------  |  --------  | cache_grow
+  -------  |  --------  |  kmem_getpages
+  -------  |  --------  |  alloc_pages|SetPageSlab     
+  -------  |  --------  | -------------     | mm_alloc_pgd   
+  -------  |  --------  | ----------------  | pgd_alloc 
+
+
+
+
+
+
+
+
+
+line 6:  kmalloc 申请一块物理内存，用于保存 struct linux_binprm *bprm.
+kmem_cache_alloc 从slab管理的缓冲区申请内存，slb全局指针由mem_cachep指定
+
+mem_cachep指向的缓冲区按照cpu的个数分为不同的链表。即每个cpu对应一个自己的缓冲区
+w there are really no other threads at all,
+   734          * so it's safe to stop telling them to kill themselves.
+
+
+
+
+
+
+

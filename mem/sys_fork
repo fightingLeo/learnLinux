@@ -1,0 +1,23 @@
+
+
+
+
+
+sys_fork
+do_fork
+alloc_pidmap |  copy_process   检查标记位，区分是否为线程
+------------ |  dup_task_struct    | try_module_get 
+------------ |  alloc_task_struct  | alloc_thread_info
+
+
+
+
+
+
+
+
+copy_process: 拷贝父进程的信息，并不实际运行
+dup_task_struct : 创建struct task_struct 和 struct thread_info
+alloc_task_struct --- kmem_cache_alloc 从缓存区获取一个结构体
+alloc_thread_info 调用kmalloc 获取一个struct thread_info结构体
+struct task_struct 和 struct thread_info各有一个成员指向对方
